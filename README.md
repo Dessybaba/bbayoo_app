@@ -38,7 +38,7 @@ A beautiful Flutter application for managing giveaways and invitations with Supa
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Dessybaba/bbayoo_app.git
 cd bbayoo_app
 ```
 
