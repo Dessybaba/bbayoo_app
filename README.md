@@ -34,7 +34,16 @@ A beautiful Flutter application for managing giveaways and invitations with Supa
 - Dart SDK (3.0.0 or higher)
 - Supabase Account
 
+
+## APK Download
+Download the Android release APK here:  
+[Download BBAYOO APK](https://github.com/Dessybaba/bbayoo_app/releases/download/v1.0.0/app-release.apk)
+
+**SHA-256 Checksum:**  
+`ea7657d1784cf73087ae14d73b6ab792f92d62df5fab1f9d5fb0483eea36c9f3`
+
 ## Setup Instructions
+
 
 ### 1. Clone the Repository
 ```bash
@@ -64,49 +73,7 @@ SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
-### 5. Database Setup (Optional)
-
-Run this SQL in your Supabase SQL Editor:
-```sql
--- Create profiles table
-CREATE TABLE profiles (
-  id UUID REFERENCES auth.users PRIMARY KEY,
-  email TEXT,
-  full_name TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Create invitations table
-CREATE TABLE invitations (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-  user_id UUID REFERENCES auth.users,
-  email TEXT NOT NULL,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Enable Row Level Security
-ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
-ALTER TABLE invitations ENABLE ROW LEVEL SECURITY;
-
--- Create policies
-CREATE POLICY "Users can view own profile"
-  ON profiles FOR SELECT
-  USING (auth.uid() = id);
-
-CREATE POLICY "Users can update own profile"
-  ON profiles FOR UPDATE
-  USING (auth.uid() = id);
-
-CREATE POLICY "Users can view own invitations"
-  ON invitations FOR SELECT
-  USING (auth.uid() = user_id);
-
-CREATE POLICY "Users can create invitations"
-  ON invitations FOR INSERT
-  WITH CHECK (auth.uid() = user_id);
-```
-
-### 6. Run the App
+### 5. Run the App
 ```bash
 # For development
 flutter run
