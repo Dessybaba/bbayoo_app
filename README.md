@@ -4,7 +4,7 @@ A beautiful Flutter application for managing giveaways and invitations with Supa
 
 ## Features
 
-- ✅ Splash Screen with gradient design
+- ✅ onboarding screen with gradient design
 - ✅ User Authentication (Login/Signup)
 - ✅ Password Reset
 - ✅ Giveaway Invitation System
@@ -142,44 +142,6 @@ flutter build web --release
 
 The web build will be in `build/web/`
 
-## Deployment
-
-### Deploy to Vercel (Web)
-
-1. Build the web version:
-```bash
-flutter build web --release
-```
-
-2. Create `vercel.json` in root:
-```json
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "build/web/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/build/web/$1"
-    }
-  ]
-}
-```
-
-3. Deploy:
-```bash
-vercel --prod
-```
-
-### Deploy to Firebase Hosting
-```bash
-firebase init hosting
-firebase deploy
-```
 
 ## Project Structure
 ```
